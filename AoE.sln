@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoE_GUI", "AoE_GUI\AoE_GUI.csproj", "{EE6E03FB-F2AD-4530-8AA0-10D55D77739D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoE_Core", "AoE_Core\AoE_Core.csproj", "{6EFAF41D-8021-4ACF-A70E-477430653F67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoE_Console", "AoE_Console\AoE_Console.csproj", "{1690F267-71D0-49CB-8E67-E75F20FF1CEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{EE6E03FB-F2AD-4530-8AA0-10D55D77739D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE6E03FB-F2AD-4530-8AA0-10D55D77739D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE6E03FB-F2AD-4530-8AA0-10D55D77739D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EFAF41D-8021-4ACF-A70E-477430653F67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EFAF41D-8021-4ACF-A70E-477430653F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EFAF41D-8021-4ACF-A70E-477430653F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EFAF41D-8021-4ACF-A70E-477430653F67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1690F267-71D0-49CB-8E67-E75F20FF1CEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1690F267-71D0-49CB-8E67-E75F20FF1CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1690F267-71D0-49CB-8E67-E75F20FF1CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1690F267-71D0-49CB-8E67-E75F20FF1CEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
