@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace AoE_Core
 {
-	interface IShape
+	internal interface IShape
 	{
-		bool CoversPoint(Coordinates point);
+		bool Covers(Coordinates point);
 	}
 }

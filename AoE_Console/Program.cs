@@ -11,18 +11,18 @@ namespace AoE_Console
 	{
 		static void Main(string[] args)
 		{
-			for(int rangeFeet = 5; rangeFeet <= 20; rangeFeet += 5)
+			for(int range = 5; range <= 10; range += 5)
 			{
-				CreateCircle(rangeFeet);
+				CreateCircle(range);
 				Console.WriteLine();
 			}
 
 			Console.ReadKey();
 		}
 
-		private static void CreateCircle(int rangeFeet)
+		private static void CreateCircle(int range)
 		{
-			bool[,] coveredAreaCicle = CoveredAreaCalulator.GetCoveredArea_Circle(rangeFeet);
+			bool[,] coveredAreaCicle = CoveredAreaCalulator.GetCoveredArea_Circle(range);
 			PrintResult(coveredAreaCicle);
 		}
 

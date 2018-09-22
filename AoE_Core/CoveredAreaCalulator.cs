@@ -8,49 +8,50 @@ namespace AoE_Core
 {
 	public static class CoveredAreaCalulator
 	{
-		const int FeetPerSquare = 5;
+		const int UnitsPerSquare = 5;
+		const int PointsPerUnit = 5;
+		const int PointsPerSquare = UnitsPerSquare * PointsPerUnit;
 
 		public static bool[,] GetCoveredArea_Circle(int range)
 		{
-			return FillArea(range, (Coordinates origin, Coordinates target)
-				=> IsCoveredBy.Circle(range, origin, target));
+			int areaWidth = 2 * PointsPerUnit * range + PointsPerSquare;
+			int areaHeight = areaWidth;
+
+			double center = areaWidth / 2.0;
+			Coordinates origin = new Coordinates { X = center, Y = center };
+
+			IShape circle = new Circle(
+				origin,
+				range * PointsPerUnit);
+
+			return FillArea(areaWidth, areaHeight, circle);
 		}
 
-		public static bool[,] GetCoveredArea_Cone(int range)
+		private static bool[,] FillArea(int areaWidth, int areaHeight, IShape shape)
 		{
-			return FillArea(range, (Coordinates origin, Coordinates target)
-				=> IsCoveredBy.Cone(range, origin, target));
-		}
+			bool[,] nativeGrid = new bool[areaWidth, areaHeight];
 
-		public static bool[,] GetCoveredArea_Line(int range)
-		{
-			const int width = 5;
-			return FillArea(range, (Coordinates origin, Coordinates target)
-				=> IsCoveredBy.Line(range, width, origin, target));
-		}
-
-		private static bool[,] FillArea(int range, Func<Coordinates, Coordinates, bool> check)
-		{
-			int marginSquares = 1;
-			int rangeSquaresWithMargin = range / FeetPerSquare + marginSquares;
-			int cornerLengthSquares = 2 * rangeSquaresWithMargin + 1;
-			bool[,] totalArea = new bool[cornerLengthSquares, cornerLengthSquares];
-			var origin = new Coordinates
+			for(int targetX = 0; targetX < areaWidth; targetX++)
 			{
-				X = range + marginSquares * 5,
-				Y = range + marginSquares * 5,
-			};
-
-			for(int targetXSquares = 0; targetXSquares < cornerLengthSquares; targetXSquares++)
-			{
-				for(int targetYSquares = 0; targetYSquares < cornerLengthSquares; targetYSquares++)
+				for(int targetY = 0; targetY < areaHeight; targetY++)
 				{
-					var target = new Coordinates { X = targetXSquares * 5 , Y = targetYSquares * 5};
-					totalArea[targetXSquares, targetYSquares] = check(origin, target);
+					var target = new Coordinates { X = targetX, Y = targetY };
+					nativeGrid[targetX, targetY] = shape.Covers(target);
 				}
 			}
 
-			return totalArea;
+			return nativeGrid;
+		}
+
+		private static bool[,] ToSquareGrid(bool[,] nativeGrid)
+		{
+			int widthInSquares = nativeGrid.GetLength(0) / PointsPerSquare;
+			int heightInSquares = nativeGrid.GetLength(1) / PointsPerSquare;
+			bool[,] squareGrid = new bool[widthInSquares, heightInSquares];
+
+			throw new NotImplementedException();
+
+			return squareGrid;
 		}
 	}
 }
